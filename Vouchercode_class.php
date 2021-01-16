@@ -3,7 +3,7 @@
     /**
      * CLASS BY REDz#0001
      * Truemoney wallet VoucherCode
-     * Date 1/16/2021 11:06 AM Last Update
+     * Date 1/16/2021 11:21 AM Last Update
      */
 
     class VoucherCode {
@@ -40,7 +40,7 @@
             $this->VoucherCode = $voucher_code;
             
             if(isset($this->VoucherCode) === true && $this->VoucherCode === "") {
-                $res = (object) [
+                $res = [
                     "status" => [
                         "message" => "No voucher delivery found.",
                         "reason" => "NO_VOUCHER_FOUND",
@@ -48,7 +48,7 @@
                 ];
                 return $res;
             } else if (isset($this->Mobile) === true && $this->Mobile === "") {
-                $res = (object) [
+                $res = [
                     "status" => [
                         "message" => "Can't find phone number",
                         "reason" => "NO_NUMBER_FOUND",
@@ -58,7 +58,7 @@
             } else {
                 $gift = str_replace("https://gift.truemoney.com/campaign/?v=","", $this->VoucherCode);
                 if(strlen($gift) <= 0) {
-                    $res = (object) [
+                    $res = [
                         "status" => [
                             "message" => "Vouncher code cannot be empty",
                             "reason" => "NO_VOUNCHER_FOUND",
@@ -68,7 +68,7 @@
                 }
                 $res = json_decode($this->fetch("POST" , "https://gift.truemoney.com/campaign/vouchers/{$gift}/redeem", null, json_encode(array("mobile" => $this->Mobile, "voucher_hash" => $this->VoucherCode))), true);
                 if($res["status"]["code"] == "SUCCESS") {
-                    $res = (object) [
+                    $res = [
                         "status" => [
                             "message" => "SUCCESS",
                             "amount" => $res["data"]["voucher"]["redeemed_amount_baht"],
@@ -76,7 +76,7 @@
                     ];
                     return $res;
                 } else {
-                    $res = (object) [
+                    $res = [
                         "status" => [
                             "message" => "FAIL",
                             "reason" => $res["status"]["message"],
