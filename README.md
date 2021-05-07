@@ -14,7 +14,7 @@
 ```
 ## ตัวอย่าง request.php
 ```php
-// ตัวอย่างรับค่าลิงค์
+// ตัวอย่างรับค่าลิงก์
     if(isset($_POST['link'])){
         require "Vouchercode_class.php";
         $tm = new TMN();
