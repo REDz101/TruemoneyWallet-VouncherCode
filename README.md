@@ -17,7 +17,7 @@
 // ตัวอย่างรับค่าลิงค์
     if(isset($_POST['link'])){
         require "Vouchercode_class.php";
-        $tm = new VoucherCode();
+        $tm = new TMN();
         //                                ใส่เบอร์โทร        รับค่าลิงค์
         $request = $tm->VoucherCode('06XXXXXXXX', $_POST['link']);
         print_r($request['message']);
