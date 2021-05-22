@@ -92,7 +92,7 @@ class TMN {
                     break;
 
                 case "VOUCHER_NOT_FOUND":
-                    return $this->error(700, "ไม่พบซองของขวัญ")
+                    return $this->error(700, "ไม่พบซองของขวัญ");
                     break;
                 
                 case "VOUCHER_EXPIRED":
